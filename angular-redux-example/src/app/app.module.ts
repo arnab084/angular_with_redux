@@ -12,6 +12,7 @@ import { StoreModule } from '@ngrx/store';
 import { reducer } from './reducers/user.reducer';
 
 // @ts-ignore
+// @ts-ignore
 @NgModule({
   declarations: [
     AppComponent,
@@ -23,8 +24,11 @@ import { reducer } from './reducers/user.reducer';
   ],
   imports: [
     BrowserModule,
-    StoreModule.forRoot(reducer),
-    AppRoutingModule
+    AppRoutingModule,
+    StoreModule.forRoot({}),
+    StoreModule.forFeature("user",reducer)
+    // StoreModule.forRoot(userReducer),
+
   ],
   providers: [],
   bootstrap: [AppComponent]

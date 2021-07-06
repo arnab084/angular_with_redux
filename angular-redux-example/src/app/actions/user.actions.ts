@@ -1,24 +1,18 @@
-import { Injectable } from '@angular/core'
-import { Action } from '@ngrx/store'
+import {Action, createAction, props} from '@ngrx/store'
 import { User } from '../model/user.model'
 
-// Section 2
-export const ADD_USER       = '[USER] Add'
-export const REMOVE_USER    = '[USER] Remove'
+export const ADD_USER       = 'Add'
 
-export class AddUser implements Action {
-  readonly type = ADD_USER
 
-  constructor(public payload: User) {}
-}
+// export class AddUser implements Action {
+//   readonly type = ADD_USER
+//   constructor(public payload?: User ) {}
+// }
 
-export class RemoveUser implements Action {
-  readonly type = REMOVE_USER
+export const AddUser = createAction(
+  ADD_USER,
+  props<{ user: User }>()
+);
 
-  constructor(public payload: number) {
 
-  }
-}
-
-// Section 4
-export type Actions = AddUser | RemoveUser
+// export type UserActions = AddUser

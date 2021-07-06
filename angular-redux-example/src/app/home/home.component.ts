@@ -12,16 +12,17 @@ import {Store} from "@ngrx/store";
 export class HomeComponent implements OnInit {
 
   users: Observable<User[]>;
+  // userList: User[];
   constructor(private  store: Store<AppState>) {
-    this.users = store.select("user");
+    this.users = store.select("users");
     console.log(this.users);
-    this.userList = [];
+
   }
-  userList: User[];
 
   ngOnInit(): void {
-    this.users.subscribe( users => {
-      this.userList = users;
+    this.users.subscribe(res => {
+      console.log(res);
+      // this.userList = res;
     })
   }
 
