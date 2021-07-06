@@ -1,0 +1,10 @@
+<div class="right" *ngIf="users">
+
+  <h3>Tutorials</h3>
+  <ul>
+    <li *ngFor="let user of userList">
+      <a [href]="user.url" target="_blank">{{ user.name }}</a>
+    </li>
+  </ul>
+
+</div>

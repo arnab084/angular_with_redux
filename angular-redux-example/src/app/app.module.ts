@@ -3,23 +3,27 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { LayoutComponent } from './layout/layout.component';
 import { LandingComponent } from './landing/landing.component';
 import { MenuComponent } from './menu/menu.component';
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
+import { HomeComponent } from './home/home.component';
+import { StoreModule } from '@ngrx/store';
+import { reducer } from './reducers/user.reducer';
 
+// @ts-ignore
 @NgModule({
   declarations: [
     AppComponent,
-    LayoutComponent,
     LandingComponent,
     MenuComponent,
     HeaderComponent,
-    FooterComponent
+    FooterComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,
+    StoreModule.forRoot(reducer),
     AppRoutingModule
   ],
   providers: [],
