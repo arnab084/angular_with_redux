@@ -1,8 +1,8 @@
-<div class="right" *ngIf="users">
+<div class="right" >
 
-  <h3>Users</h3>
-    <div *ngFor="let user of users | async">
-      <a [href]="user.url" target="_blank">{{ user.name }}</a>
-    </div>
+  <input type="button" value="AddJob1" (click)="AddJob1()" />
+  <input type="button" value="AddJob2" (click)="AddJob2()" />
+  {{jobState|json}}Hello
+
 
 </div>

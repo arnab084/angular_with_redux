@@ -9,10 +9,8 @@ import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { HomeComponent } from './home/home.component';
 import { StoreModule } from '@ngrx/store';
-import { reducer } from './reducers/user.reducer';
+import { reducer } from './dashboard/state+/dashboard.reducer';
 
-// @ts-ignore
-// @ts-ignore
 @NgModule({
   declarations: [
     AppComponent,
@@ -25,11 +23,9 @@ import { reducer } from './reducers/user.reducer';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    StoreModule.forRoot({}),
-    StoreModule.forFeature("user",reducer)
-    // StoreModule.forRoot(userReducer),
-
+    StoreModule.forRoot( {"userDetail":reducer} )
   ],
+
   providers: [],
   bootstrap: [AppComponent]
 })

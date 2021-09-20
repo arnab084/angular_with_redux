@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import {Observable} from "rxjs";
-import {User} from "../model/user.model";
-import {AppState} from "../app.state";
 import {Store} from "@ngrx/store";
+import { setJobTimings } from '../dashboard/state+/dashboard.actions';
+import { getJobTimings } from '../dashboard/state+/dashboard.selectors';
+import { JobStateModel } from '../dashboard/state+/job-state.model';
 
 @Component({
   selector: 'app-home',
@@ -11,19 +11,33 @@ import {Store} from "@ngrx/store";
 })
 export class HomeComponent implements OnInit {
 
-  users: Observable<User[]>;
-  // userList: User[];
-  constructor(private  store: Store<AppState>) {
-    this.users = store.select("users");
-    console.log(this.users);
+  jobState:any;
+  constructor(private  store: Store<{}>) {
+
 
   }
 
   ngOnInit(): void {
-    this.users.subscribe(res => {
-      console.log(res);
-      // this.userList = res;
-    })
+    this.store.select(getJobTimings).subscribe(jobState => {
+      console.log("jobState",jobState);
+      this.jobState = jobState;
+    });
+  }
+
+  i = 0;
+  AddJob1(){
+    // this.dashboard = ;
+    let newState: JobStateModel[] = [{jobId:1}];
+    this.jobState = newState.concat(this.jobState.job);
+    this.store.dispatch(setJobTimings({job:this.jobState}));
+    console.log("Finished");
+  }
+  AddJob2(){
+    // this.dashboard = ;
+    let newState: JobStateModel[] = [{jobId:2}];
+    this.jobState = newState.concat(this.jobState.job);
+    this.store.dispatch(setJobTimings({job:this.jobState}));
+    console.log("Finished");
   }
 
 }
