@@ -1,8 +1,17 @@
 <div class="right" >
 
-  <input type="button" value="AddJob1" (click)="AddJob1()" />
-  <input type="button" value="AddJob2" (click)="AddJob2()" />
-  {{jobState|json}}Hello
-
-
+  <div class="btn-group btn-group-toggle">
+    <label class="btn-primary" [ngClass]="{'btn-dark':viewType.amount}" ngbButtonLabel>
+      <input type="checkbox" ngbButton [(ngModel)]="viewType.amount">Amount
+    </label>
+    <label class="btn-primary" [ngClass]="{'btn-dark':viewType.quantity}" ngbButtonLabel>
+      <input type="checkbox" ngbButton [(ngModel)]="viewType.quantity">Quantity
+    </label>
+  </div>
+  <div>
+  <input type="text" value="Arnab" #name>
+  <input type="text" placeholder="http://google.com" #url>
+  <input type="button" value="AddJob1" (click)="AddJob()" />
+  {{jobState|json}}
+  </div>
 </div>

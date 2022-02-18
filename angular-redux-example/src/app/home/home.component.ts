@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {Store} from "@ngrx/store";
-import { setJobTimings } from '../dashboard/state+/dashboard.actions';
+import * as DashboardActions from '../dashboard/state+/dashboard.actions';
 import { getJobTimings } from '../dashboard/state+/dashboard.selectors';
 import { JobStateModel } from '../dashboard/state+/job-state.model';
 
@@ -12,9 +12,13 @@ import { JobStateModel } from '../dashboard/state+/job-state.model';
 export class HomeComponent implements OnInit {
 
   jobState:any;
+
+  viewType = {
+    amount: true,
+    quantity: false,
+  };
+
   constructor(private  store: Store<{}>) {
-
-
   }
 
   ngOnInit(): void {
@@ -25,19 +29,18 @@ export class HomeComponent implements OnInit {
   }
 
   i = 0;
-  AddJob1(){
-    // this.dashboard = ;
-    let newState: JobStateModel[] = [{jobId:1}];
-    this.jobState = newState.concat(this.jobState.job);
-    this.store.dispatch(setJobTimings({job:this.jobState}));
+  AddJob(){
+    if(this.jobState){
+      this.jobState.push({jobId: this.i++});
+    } else {
+      this.jobState = [{jobId:1}];
+    }
+    this.store.dispatch(DashboardActions.addMultipleJobs(this.jobState));
     console.log("Finished");
   }
-  AddJob2(){
-    // this.dashboard = ;
-    let newState: JobStateModel[] = [{jobId:2}];
-    this.jobState = newState.concat(this.jobState.job);
-    this.store.dispatch(setJobTimings({job:this.jobState}));
-    console.log("Finished");
-  }
+
+  actualData:any;
+
+
 
 }

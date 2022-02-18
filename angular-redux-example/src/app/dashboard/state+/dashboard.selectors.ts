@@ -1,10 +1,11 @@
 import { createFeatureSelector, createSelector } from '@ngrx/store';
+import { DashboardStateModel } from './dashboard-state.model';
 import { JobStateModel } from './job-state.model';
 
 // export const selectUser = (state: DashboardState ) =>state;
-export const jobStore = createFeatureSelector<JobStateModel[]>('userDetail');
+export const jobStore = createFeatureSelector<DashboardStateModel>('userDetail');
 
 export const getJobTimings = createSelector(
   jobStore,
-(state: JobStateModel[]) => state
+  (state: DashboardStateModel) => state.jobState
 );

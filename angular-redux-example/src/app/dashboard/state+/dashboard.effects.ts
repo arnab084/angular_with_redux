@@ -3,7 +3,7 @@ import { Store } from "@ngrx/store";
 
 
 @Injectable()
-export class WorksheetEffects {
+export class DashboardEffects {
 
     constructor(
         private store: Store<{}>

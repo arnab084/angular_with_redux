@@ -10,6 +10,9 @@ import { FooterComponent } from './footer/footer.component';
 import { HomeComponent } from './home/home.component';
 import { StoreModule } from '@ngrx/store';
 import { reducer } from './dashboard/state+/dashboard.reducer';
+import { EffectsModule } from '@ngrx/effects';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import {FormsModule} from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -23,7 +26,10 @@ import { reducer } from './dashboard/state+/dashboard.reducer';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    StoreModule.forRoot( {"userDetail":reducer} )
+    StoreModule.forRoot({'userDetail': reducer}),
+    EffectsModule.forRoot([]),
+    NgbModule,
+    FormsModule,
   ],
 
   providers: [],

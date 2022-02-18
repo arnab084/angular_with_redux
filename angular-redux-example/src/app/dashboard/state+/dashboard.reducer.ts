@@ -7,8 +7,12 @@ export const initialState: JobStateModel = {};
 
 export const reducer = createReducer(
   initialState,
-    on(DashboardActions.setJobTimings, (state, { job }) => ({
+    on(DashboardActions.addMultipleJobs, (state, { jobs }) => ({
       ...state,
-      job
+      jobs
+  })),
+  on(DashboardActions.addJob, (state, { job }) => ({
+    ...state,
+    job
   })),
 );
